@@ -7,18 +7,44 @@ using System.Threading.Tasks;
 
 namespace tp5
 {
-    public class Pila:Coleccionable
+    public class Pila : Coleccionable, Ordenable
     {
+        //lista de elementos
         private List<Comparable> stack;
+
+        //variables de ordenable
+        OrdenEnAula1 ordenInicio, ordenAulaLlena;
+        ordenEnAula2 ordenLlegaAlumno;
+
         //constructor
         public Pila()
         {
             this.stack = new List<Comparable>();
         }
+
         //apilar
         public void apilar(Comparable c)
         {
             this.stack.Add(c);
+            //cuando llega el primer alumno al aula
+            if (stack.Count == 1)
+            {
+
+                ordenInicio.ejecutar();
+            }
+            //cuando llega un alumno al aula
+            //se ejecuta el comando ordenLlegaAlumno
+            //y se le pasa el alumno como parámetro
+            ordenLlegaAlumno.ejecutar(c);
+
+            //cuando el aula está llena (llega a 40 alumnos)
+            //se ejecuta el comando ordenAulaLlena
+            if (stack.Count == 40)
+            {
+
+                ordenAulaLlena.ejecutar();
+            }
+            
         }
         //desapilar
         public Comparable desapilar()
@@ -94,6 +120,24 @@ namespace tp5
         {
             return new IteradorDePila(this);
         }
-  
+
+        //interfaz Ordenable (patron command)
+
+        //se invoca cuando llega el primer alumno al aula
+        public void setOrdenInicio(OrdenEnAula1 ordenInicio)
+        {
+            this.ordenInicio = ordenInicio;
+        }
+        //se invoca cuando llega un alumno al aula
+        public void setOrdenLlegaAlumno(ordenEnAula2 ordenLlegaAlumno)
+        {
+            this.ordenLlegaAlumno = ordenLlegaAlumno;
+        }
+        //se invoca cuando el aula está llena (llega a 40 alumnos)
+        public void setOrdenAulaLlena(OrdenEnAula1 ordenAulaLlena)
+        {
+            this.ordenAulaLlena = ordenAulaLlena;
+        }
+                 
     }
 }

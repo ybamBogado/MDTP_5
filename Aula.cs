@@ -10,28 +10,32 @@ namespace tp5
     public class Aula
     {
         Teacher teacher;
+        
 
-        public void comenzar() 
+        //instancia un profesor e imprime un mensaje por consola
+        public void comenzar()
         {
             Console.WriteLine("Llegó el profesor");
             teacher = new Teacher();
         }
 
-        public void nuevoAlumno(Alumno a)
+        //agrega el alumno a la lista de alumnos del teacher
+        public void nuevoAlumno(Ialumno a)
         {
-            if (teacher==null)
+            if (teacher == null)
             {
-                teacher = new Teacher();
+                comenzar();
             }
-            Student s = new ALumnoAdapter(a);
+            Student s = new IaLumnoAdapter(a);
             teacher.goToClass(s);
         }
 
+        //envia mensaje al teacher
         public void claseLista()
         {
             if (teacher == null)
             {
-                teacher = new Teacher();
+                comenzar();
             }
             teacher.teachingAClass();
         }

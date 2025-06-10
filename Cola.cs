@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace tp5
 {
-    public class Cola: Coleccionable
+    public class Cola: Coleccionable, Ordenable
     {
         protected List<Comparable>queue;
+
+        //variables de ordenable
+        OrdenEnAula1 ordenInicio, ordenAulaLlena;
+        ordenEnAula2 ordenLlegaAlumno;
+
         //constructor
         public Cola()
         {
@@ -18,6 +23,25 @@ namespace tp5
         public void encolar(Comparable c)
         {
             this.queue.Add(c);
+            //modificaciones para ordenable
+            //cuando llega el primer alumno al aula
+            if (queue.Count == 1)
+            {
+
+                ordenInicio.ejecutar();
+            }
+            //cuando llega un alumno al aula
+            //se ejecuta el comando ordenLlegaAlumno
+            //y se le pasa el alumno como parámetro
+            ordenLlegaAlumno.ejecutar(c);
+
+            //cuando el aula está llena (llega a 40 alumnos)
+            //se ejecuta el comando ordenAulaLlena
+            if (queue.Count == 40)
+            {
+
+                ordenAulaLlena.ejecutar();
+            }
         }
         //desapilar
         public Comparable desapilar()
@@ -86,6 +110,21 @@ namespace tp5
         public Iterador crearIterador()
         {
             return new IteradorDeCola(this);
+        }
+
+        public void setOrdenInicio(OrdenEnAula1 ordenInicio)
+        {
+            this.ordenInicio = ordenInicio;
+        }
+
+        public void setOrdenLlegaAlumno(ordenEnAula2 ordenLlegaAlumno)
+        {
+            this.ordenLlegaAlumno = ordenLlegaAlumno;
+        }
+
+        public void setOrdenAulaLlena(OrdenEnAula1 ordenAulaLlena)
+        {
+            this.ordenAulaLlena = ordenAulaLlena;
         }
     }
 }
