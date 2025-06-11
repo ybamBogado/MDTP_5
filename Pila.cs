@@ -31,6 +31,7 @@ namespace tp5
             {
 
                 ordenInicio.ejecutar();
+                Console.WriteLine("Primer alumno en el aula: " + ((Ialumno)c).getNombre());
             }
             //cuando llega un alumno al aula
             //se ejecuta el comando ordenLlegaAlumno
@@ -43,6 +44,7 @@ namespace tp5
             {
 
                 ordenAulaLlena.ejecutar();
+                
             }
             
         }
@@ -51,7 +53,8 @@ namespace tp5
         {
             if (stack.Count == 0)
             {
-                throw new InvalidOperationException("La pila está vacía y no se puede desapilar.");
+                Console.WriteLine("La pila está vacía. No se puede desapilar.");
+                return null;
             }
             Comparable ultimo = stack[stack.Count() - 1];
             stack.RemoveAt(stack.Count() - 1);
@@ -99,7 +102,7 @@ namespace tp5
         //agregar comparable
         public void agregar(Comparable c)
         {
-            stack.Add(c);
+            apilar(c);
             //Console.WriteLine("Elemento agregado: " + ((Numero)c).getValor);
         }
         //contiene comparable?

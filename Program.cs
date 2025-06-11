@@ -37,11 +37,23 @@ public class Program
 
         pila.setOrdenInicio(new OrdenInicio(aula));
         pila.setOrdenLlegaAlumno(new OrdenLlegaAlumno(aula));
-        pila.setOrdenAulaLlena(new OrdenAulaLlena(aula));
+        pila.setOrdenAulaLlena(new ordenAulaLlena(aula));
 
 
-        llenar(pila, OPCION_ALUMNO);
-        llenar(pila, OPCION_ALUMNO_MUY_ESTUDIOSO);
+        llenar(pila, 2); // OPCION_ALUMNO
+        llenar(pila, 4); // OPCION_ALUMNO_MUY_ESTUDIOSO
+
+        Console.WriteLine("se ejecuto correctamente el main");
+        Console.ReadKey(true);
     }
-    //llenar practica 3, ejercicio 6
+    //llenar practica 3, ejercicio 
+    public static void llenar(Coleccionable c, int opcion)
+    {
+        for (int i = 0; i < 40; i++)
+        {
+            Comparable fabrica = FabricaDeComparables.crearAleatorio(opcion);
+            c.agregar(fabrica);
+        }
+        
+    }
 }

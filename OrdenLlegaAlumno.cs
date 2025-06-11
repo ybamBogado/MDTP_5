@@ -15,6 +15,7 @@ class OrdenLlegaAlumno : ordenEnAula2
             // Si c es un alumno, se envía el mensaje nuevoAlumno al aula.
             Ialumno alumno = (Ialumno)c;
             aula.nuevoAlumno(alumno);
+            // Console.WriteLine($"Nuevo alumno: {alumno.getNombre()}, DNI: {alumno.getDni()}, Legajo: {alumno.getLegajo()}");
         }
         else
         {

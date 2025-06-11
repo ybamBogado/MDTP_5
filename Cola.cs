@@ -91,7 +91,8 @@ namespace tp5
         //agregar comparable
         public void agregar(Comparable c)
         {
-            queue.Add(c);
+            encolar(c);
+            //modificaciones para ordenable
             //Console.WriteLine("Elemento agregado: " + ((Numero)c).getValor());
         }
         //contiene comparable?
